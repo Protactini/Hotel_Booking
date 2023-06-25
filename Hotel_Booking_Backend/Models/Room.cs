@@ -1,21 +1,20 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Hotel_Booking_Backend.Models
+namespace HotelBookingService.Models
 {
-	public class Room
-	{
+    public class Room
+    {
         public int Id { get; set; }
-
+        public int HotelId { get; set; }
+        
         [Required]
-        public int Number { get; set; }
-
+        [MaxLength(10)]
+        public string RoomNumber { get; set; }
+        
         [Required]
-        [MaxLength(50)]
-        public string Type { get; set; }
-
-        [Required]
-        public double Price { get; set; }
+        [Range(0, double.MaxValue)]
+        public decimal PricePerNight { get; set; }
+        
+        // Additional properties specific to a room
     }
 }
-
