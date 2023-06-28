@@ -8,9 +8,9 @@ namespace Hotel_Booking_Backend.DAO;
 
 public class HotelDAO
 {
-    private readonly HotelContext _context;
+    private readonly HotelBookingContext _context;
 
-    public HotelDAO(HotelContext context)
+    public HotelDAO(HotelBookingContext context)
     {
         _context = context;
     }

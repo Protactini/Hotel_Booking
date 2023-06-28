@@ -15,11 +15,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<HotelContext>(options =>
+
+//Add coneection to the Azure SQL
+builder.Services.AddDbContext<HotelBookingContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("AzureConnection")));
 
+// Add DAO and Service layer
 builder.Services.AddScoped<HotelDAO>();
+builder.Services.AddScoped<RoomDAO>();
 builder.Services.AddScoped<HotelService>();
+builder.Services.AddScoped<IRoomService>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

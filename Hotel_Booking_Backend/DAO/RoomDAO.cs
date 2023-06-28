@@ -1,22 +1,22 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HotelBookingService.Models;
-using HotelBookingService.DAO;
+using Hotel_Booking_Backend.Models;
+using Hotel_Booking_Backend.DAO;
 
-namespace HotelBookingService.Services
+namespace Hotel_Booking_Backend.Services
 {
-    public class RoomService : IRoomService
+    public class RoomDAO
     {
-        private readonly IRoomDAO _roomDAO;
+        private readonly RoomDAO _roomDAO;
 
-        public RoomService(IRoomDAO roomDAO)
+        public RoomDAO(RoomDAO roomDAO)
         {
             _roomDAO = roomDAO;
         }
 
-        public async Task<IEnumerable<Room>> GetAllRooms()
+        public async Task<IEnumerable<Room>> GetRoomByHotalIdAsync(int hotalId)
         {
-            return await _roomDAO.GetAllRooms();
+            return await _roomDAO.GetRoomByHotalIdAsync(hotalId);
         }
 
         public async Task<Room> GetRoomByHotelIdAndRoomId(int hotelId, int roomId)
