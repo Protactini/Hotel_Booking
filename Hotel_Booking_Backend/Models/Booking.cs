@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HotelBookingService.Models
+namespace Hotel_Booking_Backend.Models
 {
     public class Booking
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using HotelBookingService.Models;
-using HotelBookingService.DAO;
+using Hotel_Booking_Backend.Models;
+using Hotel_Booking_Backend.DAO;
 
-namespace HotelBookingService.Services
+namespace Hotel_Booking_Backend.Services
 {
     public class HotelService : IHotelService
     {

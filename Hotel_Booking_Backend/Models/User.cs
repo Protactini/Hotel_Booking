@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace HotelBookingService.Models
+namespace Hotel_Booking_Backend.Models
 {
 	public class User
 	{

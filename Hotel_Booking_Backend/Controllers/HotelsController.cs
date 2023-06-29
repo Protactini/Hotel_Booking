@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using HotelBookingService.Models;
-using HotelBookingService.Services;
+using Hotel_Booking_Backend.Models;
+using Hotel_Booking_Backend.Services;
 
 namespace Hotel_Booking_Backend.Controllers
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using HotelBookingService.Models;
+using Hotel_Booking_Backend.Models;
 
-namespace HotelBookingService.Services
+namespace Hotel_Booking_Backend.Services
 {
     public interface IBookingService
     {

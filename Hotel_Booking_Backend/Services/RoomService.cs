@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HotelBookingService.Models;
-using HotelBookingService.DAO;
+using Hotel_Booking_Backend.Models;
+using Hotel_Booking_Backend.DAO;
 
-namespace HotelBookingService.Services
+namespace Hotel_Booking_Backend.Services
 {
     public class RoomService : IRoomService
     {
@@ -14,22 +14,22 @@ namespace HotelBookingService.Services
             _roomDAO = roomDAO;
         }
 
-        public async Task<IEnumerable<Room>> GetAllRooms()
-        {
-            return await _roomDAO.GetAllRooms();
-        }
+        //public async Task<IEnumerable<Room>> GetAllRooms()
+        //{
+        //    return await _roomDAO.GetAllRooms();
+        //}
 
         public async Task<IEnumerable<Room>> GetRoomsByHotelId(int hotelId)
         {
-            return await _roomDAO.GetRoomsByHotelId(hotelId);
+            return await _roomDAO.GetRoomByHotalIdAsync(hotelId);
         }
 
-        public async Task<Room> GetRoomById(int id)
+        public async Task<Room> GetRoomByHotelIdAndRoomId(int hotalId,int roomid)
         {
-            return await _roomDAO.GetRoomById(id);
+            return await _roomDAO.GetRoomByHotalIdAndRoomId(hotalId, roomid);
         }
 
-        public async Task<Room> CreateRoom(Room room)
+        public async Task<Room> AddRoomToHotel(Room room)
         {
             return await _roomDAO.CreateRoom(room);
         }
@@ -39,9 +39,9 @@ namespace HotelBookingService.Services
             await _roomDAO.UpdateRoom(room);
         }
 
-        public async Task DeleteRoom(int id)
+        public async Task DeleteRoom(int hotalId, int roomId)
         {
-            await _roomDAO.DeleteRoom(id);
+            await _roomDAO.DeleteRoom(hotalId, roomId);
         }
     }
 }

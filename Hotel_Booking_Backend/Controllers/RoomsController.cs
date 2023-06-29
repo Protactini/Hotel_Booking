@@ -19,7 +19,7 @@ namespace Hotel_Booking_Backend.Controllers
 
         // GET: /hotels/{hotelId}/rooms
         [HttpGet]
-        public async Task<IEnumerable<Room>> GetAllRooms(int hotelId)
+        public async Task<IEnumerable<Room>> GetAllRoomsInOneHotal(int hotelId)
         {
             return await _roomService.GetRoomsByHotelId(hotelId);
         }
@@ -33,10 +33,10 @@ namespace Hotel_Booking_Backend.Controllers
 
         // POST: /hotels/{hotelId}/rooms
         [HttpPost]
-        public async Task<ActionResult<Room>> CreateRoom(int hotelId, [FromBody] Room room)
+        public async Task<ActionResult<Room>> CreateRoom([FromBody] Room room)
         {
-            var createdRoom = await _roomService.AddRoomToHotel(hotelId, room);
-            return CreatedAtAction(nameof(GetRoom), new { hotelId = hotelId, roomId = createdRoom.Id }, createdRoom);
+            var createdRoom = await _roomService.AddRoomToHotel(room);
+            return CreatedAtAction(nameof(GetRoom), new { hotelId = createdRoom.HotelId, roomId = createdRoom.Id }, createdRoom);
         }
 
         // PUT: /hotels/{hotelId}/rooms/{roomId}
@@ -48,7 +48,7 @@ namespace Hotel_Booking_Backend.Controllers
                 return BadRequest("The provided roomId does not match the room's Id.");
             }
 
-            await _roomService.UpdateRoomInHotel(hotelId, room);
+            await _roomService.UpdateRoom(room);
             return NoContent();
         }
 
@@ -56,7 +56,7 @@ namespace Hotel_Booking_Backend.Controllers
         [HttpDelete("{roomId}")]
         public async Task<IActionResult> DeleteRoom(int hotelId, int roomId)
         {
-            await _roomService.DeleteRoomFromHotel(hotelId, roomId);
+            await _roomService.DeleteRoom(hotelId, roomId);
             return NoContent();
         }
     }

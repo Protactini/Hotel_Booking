@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HotelBookingService.Models;
+using Hotel_Booking_Backend.Models;
 
-namespace HotelBookingService.DAO
+namespace Hotel_Booking_Backend.DAO
 {
     public class BookingDAO : IBookingDAO
     {
-        private readonly ApplicationDbContext _context;
+        private readonly HotelBookingContext _context;
 
-        public BookingDAO(ApplicationDbContext context)
+        public BookingDAO(HotelBookingContext context)
         {
             _context = context;
         }

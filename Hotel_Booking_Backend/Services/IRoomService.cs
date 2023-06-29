@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using HotelBookingService.Models;
+using Hotel_Booking_Backend.Models;
 
-namespace HotelBookingService.Services
+namespace Hotel_Booking_Backend.Services
 {
     public interface IRoomService
     {
-        Task<IEnumerable<Room>> GetAllRooms();
+        //Task<IEnumerable<Room>> GetAllRooms();
         Task<IEnumerable<Room>> GetRoomsByHotelId(int hotelId);
-        Task<Room> GetRoomById(int id);
-        Task<Room> CreateRoom(Room room);
+        Task<Room> GetRoomByHotelIdAndRoomId(int hotalId, int roomId);
+        Task<Room> AddRoomToHotel(Room room);
         Task UpdateRoom(Room room);
-        Task DeleteRoom(int id);
+        Task DeleteRoom(int hotalId, int roomId);
     }
 }

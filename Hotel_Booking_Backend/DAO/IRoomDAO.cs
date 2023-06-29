@@ -1,16 +1,15 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HotelBookingService.Models;
+using Hotel_Booking_Backend.Models;
 
-namespace HotelBookingService.DAO
+namespace Hotel_Booking_Backend.DAO
 {
     public interface IRoomDAO
     {
-        Task<IEnumerable<Room>> GetAllRooms();
-        Task<IEnumerable<Room>> GetRoomsByHotelId(int hotelId);
-        Task<Room> GetRoomById(int id);
+        Task<IEnumerable<Room>> GetRoomByHotalIdAsync(int hotalId);
+        Task<Room> GetRoomByHotalIdAndRoomId(int hotalId, int roomId);
         Task<Room> CreateRoom(Room room);
         Task UpdateRoom(Room room);
-        Task DeleteRoom(int id);
+        Task DeleteRoom(int hotalId, int roomId);
     }
 }

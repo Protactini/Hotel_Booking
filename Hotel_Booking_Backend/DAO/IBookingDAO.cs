@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HotelBookingService.Models;
+using Hotel_Booking_Backend.Models;
 
-namespace HotelBookingService.DAO
+namespace Hotel_Booking_Backend.DAO
 {
     public interface IBookingDAO
     {
