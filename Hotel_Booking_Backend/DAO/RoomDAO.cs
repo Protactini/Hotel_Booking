@@ -1,42 +1,47 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HotelBookingService.Models;
-using HotelBookingService.DAO;
+using HotelBookingService.Data;
 
-namespace HotelBookingService.Services
+namespace HotelBookingService.DAO
 {
-    public class RoomService : IRoomService
+    public class RoomDAO : IRoomDAO
     {
-        private readonly IRoomDAO _roomDAO;
+        private readonly ApplicationDbContext _context;
 
-        public RoomService(IRoomDAO roomDAO)
+        public RoomDAO(ApplicationDbContext context)
         {
-            _roomDAO = roomDAO;
+            _context = context;
         }
 
         public async Task<IEnumerable<Room>> GetAllRooms()
         {
-            return await _roomDAO.GetAllRooms();
+            // Logic to retrieve all rooms from the database
         }
 
-        public async Task<Room> GetRoomByHotelIdAndRoomId(int hotelId, int roomId)
+        public async Task<IEnumerable<Room>> GetRoomsByHotelId(int hotelId)
         {
-            return await _roomDAO.GetRoomByHotelIdAndRoomId(hotelId, roomId);
+            // Logic to retrieve rooms by hotel ID from the database
         }
 
-        public async Task<Room> AddRoomToHotel(int hotelId, Room room)
+        public async Task<Room> GetRoomById(int id)
         {
-            return await _roomDAO.AddRoomToHotel(hotelId, room);
+            // Logic to retrieve a room by ID from the database
         }
 
-        public async Task UpdateRoomInHotel(int hotelId, Room room)
+        public async Task<Room> CreateRoom(Room room)
         {
-            await _roomDAO.UpdateRoomInHotel(hotelId, room);
+            // Logic to add a new room to the database
         }
 
-        public async Task DeleteRoomFromHotel(int hotelId, int roomId)
+        public async Task UpdateRoom(Room room)
         {
-            await _roomDAO.DeleteRoomFromHotel(hotelId, roomId);
+            // Logic to update a room in the database
+        }
+
+        public async Task DeleteRoom(int id)
+        {
+            // Logic to delete a room from the database
         }
     }
 }

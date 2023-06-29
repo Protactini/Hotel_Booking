@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Hotel_Booking_Backend.Models
+namespace HotelBookingService.Models
 {
 	public class Hotel
 	{

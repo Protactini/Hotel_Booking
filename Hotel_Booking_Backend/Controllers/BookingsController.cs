@@ -1,6 +1,7 @@
 ﻿using System;
-using Hotel_Booking_Backend.Models;
-using Hotel_Booking_Backend.Services;
+using HotelBookingService.Models;
+using HotelBookingService.DAO;
+using HotelBookingService.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotel_Booking_Backend.Controllers;

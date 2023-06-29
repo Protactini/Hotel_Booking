@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using HotelBookingService.Models;
 
-namespace HotelBookingService.Services
+namespace HotelBookingService.DAO
 {
-    public interface IUserService
+    public interface IUserDAO
     {
         Task<IEnumerable<User>> GetAllUsers();
         Task<User> GetUserById(int id);

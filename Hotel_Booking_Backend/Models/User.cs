@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Hotel_Booking_Backend.Models
+namespace HotelBookingService.Models
 {
-	public class UserProperty
+	public class User
 	{
         public int Id { get; set; }
 

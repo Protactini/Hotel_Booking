@@ -1,12 +1,13 @@
-﻿using Hotel_Booking_Backend.DAO;
-using Hotel_Booking_Backend.Models;
-using Hotel_Booking_Backend.Services;
+﻿using HotelBookingService.Models;
+using HotelBookingService.DAO;
+using HotelBookingService.Services;
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 
 
 

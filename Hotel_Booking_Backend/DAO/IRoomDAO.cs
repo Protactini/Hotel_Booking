@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using HotelBookingService.Models;
 
-namespace HotelBookingService.Services
+namespace HotelBookingService.DAO
 {
-    public interface IRoomService
+    public interface IRoomDAO
     {
         Task<IEnumerable<Room>> GetAllRooms();
         Task<IEnumerable<Room>> GetRoomsByHotelId(int hotelId);
