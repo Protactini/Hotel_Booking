@@ -16,16 +16,25 @@ namespace Hotel_Booking_Backend.DAO
         public async Task<IEnumerable<Booking>> GetAllBookings()
         {
             // Logic to retrieve all bookings from the database
+            return null;
+        }
+
+        public async Task<IEnumerable<Booking>> GetAllBookingsByHotalId(int hotalId)
+        {
+            // Logic to retrieve a booking by ID from the database
+            return null;
         }
 
         public async Task<Booking> GetBookingById(int id)
         {
             // Logic to retrieve a booking by ID from the database
+            return null;
         }
 
         public async Task<Booking> CreateBooking(Booking booking)
         {
             // Logic to add a new booking to the database
+            return null;
         }
 
         public async Task UpdateBooking(Booking booking)

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Hotel_Booking_Backend.Models;
-using Hotel_Booking_Backend.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hotel_Booking_Backend.DAO

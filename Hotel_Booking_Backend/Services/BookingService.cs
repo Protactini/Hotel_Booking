@@ -1,5 +1,6 @@
 using Hotel_Booking_Backend.Models;
 using Hotel_Booking_Backend.DAO;
+using Hotel_Booking_Backend.Services;
 
 namespace Hotel_Booking_Backend.Services
 {
@@ -14,6 +15,11 @@ namespace Hotel_Booking_Backend.Services
 
 
         public async Task<IEnumerable<Booking>> GetAllBookings()
+        {
+            return await _bookingDAO.GetAllBookings();
+        }
+
+        public async Task<IEnumerable<Booking>> GetAllBookingsByHotalId(int hotalId)
         {
             return await _bookingDAO.GetAllBookings();
         }

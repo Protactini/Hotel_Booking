@@ -7,6 +7,7 @@ namespace Hotel_Booking_Backend.DAO
     public interface IBookingDAO
     {
         Task<IEnumerable<Booking>> GetAllBookings();
+        Task<IEnumerable<Booking>> GetAllBookingsByHotalId(int hotalId);
         Task<Booking> GetBookingById(int id);
         Task<Booking> CreateBooking(Booking booking);
         Task UpdateBooking(Booking booking);

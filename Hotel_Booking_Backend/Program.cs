@@ -22,10 +22,10 @@ builder.Services.AddDbContext<HotelBookingContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("AzureConnection")));
 
 // Add DAO and Service layer
-builder.Services.AddScoped<HotelDAO>();
-builder.Services.AddScoped<RoomDAO>();
-builder.Services.AddScoped<HotelService>();
-builder.Services.AddScoped<IRoomService>();
+builder.Services.AddScoped<IHotelDAO, HotelDAO>();
+builder.Services.AddScoped<IRoomDAO, RoomDAO>();
+builder.Services.AddScoped<IHotelService, HotelService>();
+builder.Services.AddScoped<IRoomService, RoomService>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

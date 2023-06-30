@@ -7,9 +7,10 @@ namespace Hotel_Booking_Backend.Services
     public interface IBookingService
     {
         Task<IEnumerable<Booking>> GetAllBookings();
+        Task<IEnumerable<Booking>> GetAllBookingsByHotalId(int hotalId);
         Task<Booking> GetBookingById(int id);
         Task<Booking> CreateBooking(Booking booking);
-        Task<bool> UpdateBooking(Booking booking);
-        Task<bool> DeleteBooking(int id);
+        Task UpdateBooking(Booking booking);
+        Task DeleteBooking(int id);
     }
 }

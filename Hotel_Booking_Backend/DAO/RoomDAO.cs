@@ -4,9 +4,9 @@ using Hotel_Booking_Backend.Models;
 using Hotel_Booking_Backend.DAO;
 using Microsoft.EntityFrameworkCore;
 
-namespace Hotel_Booking_Backend.Services
+namespace Hotel_Booking_Backend.DAO
 {
-    public class RoomDAO
+    public class RoomDAO :IRoomDAO
     {
         private readonly HotelBookingContext _context;
 

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Hotel_Booking_Backend.Models;
-using Hotel_Booking_Backend.Data;
 
 namespace Hotel_Booking_Backend.DAO
 {
@@ -17,16 +16,19 @@ namespace Hotel_Booking_Backend.DAO
         public async Task<IEnumerable<User>> GetAllUsers()
         {
             // Logic to retrieve all users from the database
+            return null;
         }
 
         public async Task<User> GetUserById(int id)
         {
             // Logic to retrieve a user by ID from the database
+            return null;
         }
 
         public async Task<User> CreateUser(User user)
         {
             // Logic to add a new user to the database
+            return null;
         }
 
         public async Task UpdateUser(User user)

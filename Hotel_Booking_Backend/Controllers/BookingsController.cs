@@ -19,30 +19,30 @@ public class BookingsController : ControllerBase
 
     // GET: api/bookings
     [HttpGet]
-    public IEnumerable<Booking> GetBookings()
+    public async Task<IEnumerable<Booking>> GetBookings()
     {
-        return _bookingService.GetAll();
+        return await _bookingService.GetAllBookings();
     }
 
     // GET: api/bookings/{id}
     [HttpGet("{id}")]
     public ActionResult<Booking> GetBooking(int id)
     {
-        var booking = _bookingService.Get(id);
+        var booking = _bookingService.GetAllBookingsByHotalId(id);
 
         if (booking == null)
         {
             return NotFound();
         }
 
-        return booking;
+        return Ok(booking);
     }
 
     // POST: api/bookings
     [HttpPost]
     public ActionResult<Booking> PostBooking(Booking booking)
     {
-        _bookingService.Create(booking);
+        _bookingService.CreateBooking(booking);
 
         return CreatedAtAction(nameof(GetBooking), new { id = booking.Id }, booking);
     }
@@ -56,7 +56,7 @@ public class BookingsController : ControllerBase
             return BadRequest();
         }
 
-        _bookingService.Update(booking);
+        _bookingService.UpdateBooking(booking);
 
         return NoContent();
     }
@@ -65,7 +65,7 @@ public class BookingsController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeleteBooking(int id)
     {
-        _bookingService.Delete(id);
+        _bookingService.DeleteBooking(id);
 
         return NoContent();
     }
