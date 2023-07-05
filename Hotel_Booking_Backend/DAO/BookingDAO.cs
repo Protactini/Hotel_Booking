@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Hotel_Booking_Backend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hotel_Booking_Backend.DAO
 {
@@ -16,7 +17,7 @@ namespace Hotel_Booking_Backend.DAO
         public async Task<IEnumerable<Booking>> GetAllBookings()
         {
             // Logic to retrieve all bookings from the database
-            return null;
+            return await _context.Bookings.ToListAsync();
         }
 
         public async Task<IEnumerable<Booking>> GetAllBookingsByHotalId(int hotalId)

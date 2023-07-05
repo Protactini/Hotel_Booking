@@ -25,6 +25,8 @@ namespace Hotel_Booking_Backend.Models
         [Required]
         public string Password { get; set; }
 
+        // Navigation properties
+        public ICollection<Booking>? Bookings { get; set; }
     }
 }
 

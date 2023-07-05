@@ -10,9 +10,9 @@ namespace Hotel_Booking_Backend.Controllers
     [Route("[controller]")]
     public class HotelsController : ControllerBase
     {
-        private readonly HotelService _hotelService;
+        private readonly IHotelService _hotelService;
 
-        public HotelsController(HotelService hotelService)
+        public HotelsController(IHotelService hotelService)
         {
             _hotelService = hotelService;
         }

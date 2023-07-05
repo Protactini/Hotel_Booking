@@ -13,8 +13,11 @@ namespace Hotel_Booking_Backend.Models
         
         [Required]
         [Range(0, double.MaxValue)]
-        public decimal PricePerNight { get; set; }
-        
+        public double PricePerNight { get; set; }
         // Additional properties specific to a room
+
+        // Navigation properties
+        public Hotel? Hotel { get; set; }
+        public Booking? Booking { get; set; }
     }
 }

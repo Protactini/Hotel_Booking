@@ -24,6 +24,8 @@ builder.Services.AddDbContext<HotelBookingContext>(options =>
 // Add DAO and Service layer
 builder.Services.AddScoped<IHotelDAO, HotelDAO>();
 builder.Services.AddScoped<IRoomDAO, RoomDAO>();
+builder.Services.AddScoped<IBookingDAO, BookingDAO>();
+builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IHotelService, HotelService>();
 builder.Services.AddScoped<IRoomService, RoomService>();
 
