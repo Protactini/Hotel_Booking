@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Hotel_Booking_Backend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hotel_Booking_Backend.DAO
 {
@@ -15,30 +16,40 @@ namespace Hotel_Booking_Backend.DAO
 
         public async Task<IEnumerable<User>> GetAllUsers()
         {
-            // Logic to retrieve all users from the database
-            return null;
+            // Retrieve all users from the database
+            return await _context.Users.ToListAsync();
         }
 
         public async Task<User> GetUserById(int id)
         {
-            // Logic to retrieve a user by ID from the database
-            return null;
+            // Retrieve a user by their ID from the database
+            return await _context.Users.FindAsync(id);
         }
 
         public async Task<User> CreateUser(User user)
         {
-            // Logic to add a new user to the database
-            return null;
+            // Add a new user to the database
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            return user;
         }
 
         public async Task UpdateUser(User user)
         {
-            // Logic to update a user in the database
+            // Update a user in the database
+            _context.Entry(user).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteUser(int id)
         {
-            // Logic to delete a user from the database
+            // Delete a user from the database
+            var user = await _context.Users.FindAsync(id);
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
