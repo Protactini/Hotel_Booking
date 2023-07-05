@@ -35,5 +35,50 @@ public class HotelBookingContext : DbContext
             .WithOne(r => r.Hotel)
             .HasForeignKey(r => r.HotelId).IsRequired();
     }
+    public IEnumerable<Booking> GetAllBookings()
+    {
+        // Retrieve all bookings from the database
+        return Bookings;
+    }
+
+    public IEnumerable<Booking> GetAllBookingsByHotelId(int hotelId)
+    {
+        // Retrieve all bookings for a specific hotel from the database
+        return Bookings.Include(b => b.Room).Where(b => b.Room.HotelId == hotelId);
+    }
+
+    public Booking GetBookingById(int id)
+    {
+        // Retrieve a booking by its ID from the database
+        return Bookings.Find(id);
+    }
+
+    public Booking CreateBooking(Booking booking)
+    {
+        // Add a new booking to the database
+        Bookings.Add(booking);
+        SaveChanges();
+        return booking;
+    }
+
+    public void UpdateBooking(Booking booking)
+    {
+        // Update a booking in the database
+        Entry(booking).State = EntityState.Modified;
+        SaveChanges();
+    }
+
+    public void DeleteBooking(int id)
+    {
+        // Delete a booking from the database
+        var booking = Bookings.Find(id);
+        if (booking != null)
+        {
+            Bookings.Remove(booking);
+            SaveChanges();
+        }
+    }
+
+
 }
 
