@@ -15,13 +15,13 @@ namespace Hotel_Booking_Backend.DAO
             _context = context;
         }
 
-        public async Task<IEnumerable<Room>> GetRoomByHotalIdAsync(int hotalId)
+        public async Task<IEnumerable<Room>> GetRoomByHotelIdAsync(int hotelId)
         {
             // Logic to retrieve all rooms from the database
-            return await _context.Rooms.Where(r => r.HotelId == hotalId).ToListAsync();
+            return await _context.Rooms.Where(r => r.HotelId == hotelId).ToListAsync();
         }
 
-        public async Task<Room> GetRoomByHotalIdAndRoomId(int hotelId, int roomId)
+        public async Task<Room> GetRoomByHotelIdAndRoomId(int hotelId, int roomId)
         {
             // Logic to retrieve rooms by hotel ID from the database
             Room? room = await _context.Rooms.FirstOrDefaultAsync(r => r.HotelId == hotelId && r.Id == roomId);

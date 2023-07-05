@@ -8,9 +8,9 @@ namespace Hotel_Booking_Backend.Services
     {
         //Task<IEnumerable<Room>> GetAllRooms();
         Task<IEnumerable<Room>> GetRoomsByHotelId(int hotelId);
-        Task<Room> GetRoomByHotelIdAndRoomId(int hotalId, int roomId);
+        Task<Room> GetRoomByHotelIdAndRoomId(int hotelId, int roomId);
         Task<Room> AddRoomToHotel(Room room);
         Task UpdateRoom(Room room);
-        Task DeleteRoom(int hotalId, int roomId);
+        Task DeleteRoom(int hotelId, int roomId);
     }
 }

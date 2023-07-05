@@ -19,7 +19,7 @@ namespace Hotel_Booking_Backend.Services
             return await _bookingDAO.GetAllBookings();
         }
 
-        public async Task<IEnumerable<Booking>> GetAllBookingsByHotalId(int hotalId)
+        public async Task<IEnumerable<Booking>> GetAllBookingsByHotelId(int hotelId)
         {
             return await _bookingDAO.GetAllBookings();
         }

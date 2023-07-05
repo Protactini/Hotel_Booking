@@ -19,7 +19,7 @@ namespace Hotel_Booking_Backend.Controllers
 
         // GET: /hotels/{hotelId}/rooms
         [HttpGet]
-        public async Task<IEnumerable<Room>> GetAllRoomsInOneHotal(int hotelId)
+        public async Task<IEnumerable<Room>> GetAllRoomsInOneHotel(int hotelId)
         {
             return await _roomService.GetRoomsByHotelId(hotelId);
         }

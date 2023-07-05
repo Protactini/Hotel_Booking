@@ -21,12 +21,12 @@ namespace Hotel_Booking_Backend.Services
 
         public async Task<IEnumerable<Room>> GetRoomsByHotelId(int hotelId)
         {
-            return await _roomDAO.GetRoomByHotalIdAsync(hotelId);
+            return await _roomDAO.GetRoomByHotelIdAsync(hotelId);
         }
 
-        public async Task<Room> GetRoomByHotelIdAndRoomId(int hotalId,int roomid)
+        public async Task<Room> GetRoomByHotelIdAndRoomId(int hotelId,int roomid)
         {
-            return await _roomDAO.GetRoomByHotalIdAndRoomId(hotalId, roomid);
+            return await _roomDAO.GetRoomByHotelIdAndRoomId(hotelId, roomid);
         }
 
         public async Task<Room> AddRoomToHotel(Room room)
@@ -39,9 +39,9 @@ namespace Hotel_Booking_Backend.Services
             await _roomDAO.UpdateRoom(room);
         }
 
-        public async Task DeleteRoom(int hotalId, int roomId)
+        public async Task DeleteRoom(int hotelId, int roomId)
         {
-            await _roomDAO.DeleteRoom(hotalId, roomId);
+            await _roomDAO.DeleteRoom(hotelId, roomId);
         }
     }
 }

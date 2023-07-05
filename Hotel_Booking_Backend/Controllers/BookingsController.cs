@@ -28,7 +28,7 @@ public class BookingsController : ControllerBase
     [HttpGet("{id}")]
     public ActionResult<Booking> GetBooking(int id)
     {
-        var booking = _bookingService.GetAllBookingsByHotalId(id);
+        var booking = _bookingService.GetAllBookingsByHotelId(id);
 
         if (booking == null)
         {
