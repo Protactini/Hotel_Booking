@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Extensions.Hosting;
 
 namespace Hotel_Booking_Backend.Models
 {
@@ -17,7 +18,7 @@ namespace Hotel_Booking_Backend.Models
         public string Address { get; set; }
 
         // Navigation properties
-        public ICollection<Room>? Rooms { get; set; }
+        public virtual ICollection<Room>? Rooms { get; } = new List<Room>();
     }
 }
 

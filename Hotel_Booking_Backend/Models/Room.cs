@@ -17,7 +17,7 @@ namespace Hotel_Booking_Backend.Models
         // Additional properties specific to a room
 
         // Navigation properties
-        public Hotel? Hotel { get; set; }
-        public Booking? Booking { get; set; }
+        public virtual Hotel? Hotel { get; set; }
+        public virtual Booking? Booking { get; set; }
     }
 }

@@ -16,7 +16,11 @@ namespace Hotel_Booking_Backend.Services
 
         public async Task<IEnumerable<Hotel>> GetAllHotels()
         {
-            return await _hotelDAO.GetAllHotels();
+            var temp = await _hotelDAO.GetAllHotels();
+
+            Console.WriteLine(temp.FirstOrDefault().Rooms.FirstOrDefault());
+
+            return temp;
         }
 
         public async Task<Hotel> GetHotelById(int id)

@@ -21,6 +21,8 @@ namespace Hotel_Booking_Backend.Controllers
         [HttpGet]
         public async Task<IEnumerable<Hotel>> GetAllHotels()
         {
+
+
             return await _hotelService.GetAllHotels();
         }
 

@@ -1,4 +1,4 @@
-﻿using Hotel_Booking_Backend.Models;
+using Hotel_Booking_Backend.Models;
 using Hotel_Booking_Backend.DAO;
 using Hotel_Booking_Backend.Services;
 using System.Configuration;
@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Text.Json.Serialization;
 
 
 
@@ -14,12 +15,18 @@ using Microsoft.Extensions.Hosting;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// And ignore cycle refrenece
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
-builder.Services.AddControllers();
+
 
 //Add conection to the Azure SQL
+//Make the realtion lazy loading
 builder.Services.AddDbContext<HotelBookingContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("AzureConnection")));
+                options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("AzureConnection")));
 
 // Add DAO and Service layer
 builder.Services.AddScoped<IHotelDAO, HotelDAO>();

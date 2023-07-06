@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Proxies;
 
 
 namespace Hotel_Booking_Backend.Models;
@@ -9,6 +10,12 @@ public class HotelBookingContext : DbContext
 {
     public HotelBookingContext(DbContextOptions<HotelBookingContext> options) : base(options)
     {
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        base.OnConfiguring(optionsBuilder);
+        optionsBuilder.UseLazyLoadingProxies(); // Enable lazy loading
     }
 
     public DbSet<Hotel> Hotels { get; set; }
