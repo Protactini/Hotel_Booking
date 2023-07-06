@@ -17,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-//Add coneection to the Azure SQL
+//Add conection to the Azure SQL
 builder.Services.AddDbContext<HotelBookingContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("AzureConnection")));
 
