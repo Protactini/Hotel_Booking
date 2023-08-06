@@ -8,9 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text.Json.Serialization;
-
-
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Hotel_Booking_Backend.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,29 @@ builder.Services.AddScoped<IHotelService, HotelService>();
 builder.Services.AddScoped<IRoomService, RoomService>();
 
 
+//Add Authentication to the ReatFul APi
+builder.Services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = false,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = "Jwt:Issuer", //Referenceed from appseetting.json
+        ValidAudience = "Jwt:Audience", //Referenceed from appseetting.json
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Jwt:Key")) //Referenceed from appseetting.json["JwtToken:SecretKey"]
+    };
+});
+
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -49,6 +73,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Add MidleWare
+app.UseMiddleware<JWTMiddleware>();
 
 app.UseHttpsRedirection();
 

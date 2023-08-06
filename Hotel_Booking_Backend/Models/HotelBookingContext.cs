@@ -42,7 +42,5 @@ public class HotelBookingContext : DbContext
             .WithOne(r => r.Hotel)
             .HasForeignKey(r => r.HotelId).IsRequired();
     }
- 
-
 }
 
