@@ -4,52 +4,60 @@ using Microsoft.AspNetCore.Mvc;
 using Hotel_Booking_Backend.Models;
 using Hotel_Booking_Backend.Services;
 
-namespace Hotel_Booking_Backend.Controllers
-{
-    [ApiController]
-    [Route("[controller]")]
-    public class RoomsController : ControllerBase
-    {
-        private readonly IRoomService _roomService;
+namespace Hotel_Booking_Backend.Controllers;
 
-        public RoomsController(IRoomService roomService)
+[ApiController]
+[Route("hotels/{hotelId}/rooms")]
+public class RoomsController : ControllerBase
+{
+    private readonly IRoomService _roomService;
+
+    public RoomsController(IRoomService roomService)
+    {
+        _roomService = roomService;
+    }
+
+    // GET: /hotels/{hotelId}/rooms
+    [HttpGet]
+    public async Task<IEnumerable<Room>> GetAllRoomsInOneHotel(int hotelId)
+    {
+        return await _roomService.GetRoomsByHotelId(hotelId);
+    }
+
+    // GET: /hotels/{hotelId}/rooms/{roomId}
+    [HttpGet("{roomId}")]
+    public async Task<Room> GetRoom(int hotelId, int roomId)
+    {
+        return await _roomService.GetRoomByHotelIdAndRoomId(hotelId, roomId);
+    }
+
+    // POST: /hotels/{hotelId}/rooms
+    [HttpPost]
+    public async Task<ActionResult<Room>> CreateRoom([FromBody] Room room)
+    {
+        var createdRoom = await _roomService.AddRoomToHotel(room);
+        return CreatedAtAction(nameof(GetRoom), new { hotelId = createdRoom.HotelId, roomId = createdRoom.Id }, createdRoom);
+    }
+
+    // PUT: /hotels/{hotelId}/rooms/{roomId}
+    [HttpPut("{roomId}")]
+    public async Task<IActionResult> UpdateRoom(int hotelId, int roomId, [FromBody] Room room)
+    {
+        if (roomId != room.Id)
         {
-            _roomService = roomService;
+            return BadRequest("The provided roomId does not match the room's Id.");
         }
 
-        //// GET: /rooms
-        //[HttpGet]
-        //public async Task<IEnumerable<Room>> GetAllRooms()
-        //{
-        //    return await _roomService.GetAllRooms();
-        //}
+        await _roomService.UpdateRoom(room);
+        return NoContent();
+    }
 
-        //// GET: /rooms/{id}
-        //[HttpGet("{id}")]
-        //public async Task<Room> GetRoomById(int id)
-        //{
-        //    return await _roomService.GetRoomById(id);
-        //}
-
-        //// POST: /rooms
-        //[HttpPost]
-        //public async Task<Room> CreateRoom([FromBody] Room room)
-        //{
-        //    return await _roomService.CreateRoom(room);
-        //}
-
-        //// PUT: /rooms
-        //[HttpPut]
-        //public async Task UpdateRoom([FromBody] Room room)
-        //{
-        //    await _roomService.UpdateRoom(room);
-        //}
-
-        //// DELETE: /rooms/{id}
-        //[HttpDelete("{id}")]
-        //public async Task DeleteRoom(int id)
-        //{
-        //    await _roomService.DeleteRoom(id);
-        //}
+    // DELETE: /hotels/{hotelId}/rooms/{roomId}
+    [HttpDelete("{roomId}")]
+    public async Task<IActionResult> DeleteRoom(int hotelId, int roomId)
+    {
+        await _roomService.DeleteRoom(hotelId, roomId);
+        return NoContent();
     }
 }
+

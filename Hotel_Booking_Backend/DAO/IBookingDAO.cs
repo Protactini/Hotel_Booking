@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Hotel_Booking_Backend.Models;
 
-namespace Hotel_Booking_Backend.Services;
+namespace Hotel_Booking_Backend.DAO;
 
-public interface IBookingService
+public interface IBookingDAO
 {
     Task<IEnumerable<Booking>> GetAllBookings();
     Task<IEnumerable<Booking>> GetAllBookingsByHotelId(int hotelId);
@@ -12,5 +12,5 @@ public interface IBookingService
     Task<Booking> CreateBooking(Booking booking);
     Task UpdateBooking(Booking booking);
     Task DeleteBooking(int id);
-}
 
+}

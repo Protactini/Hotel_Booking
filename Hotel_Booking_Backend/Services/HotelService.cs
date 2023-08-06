@@ -1,41 +1,36 @@
-﻿using System;
-using Hotel_Booking_Backend.DAO;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Hotel_Booking_Backend.Models;
+using Hotel_Booking_Backend.DAO;
 
 namespace Hotel_Booking_Backend.Services;
 
-//public interface IHotelService
-//{
-//    Task<IEnumerable<Hotel>> GetAllHotels();
-//    Task<Hotel> GetHotelById(int id);
-//    Task<Hotel> CreateHotel(Hotel hotel);
-//    Task UpdateHotel(Hotel hotel);
-//    Task DeleteHotel(int id);
-//}
+public class HotelService : IHotelService
+{
+    private readonly IHotelDAO _hotelDAO;
 
-public class HotelService
-{ 
-    private readonly HotelDAO _hotelDAO;
-
-    public HotelService(HotelDAO hotelDAO)
+    public HotelService(IHotelDAO hotelDAO)
     {
         _hotelDAO = hotelDAO;
     }
 
     public async Task<IEnumerable<Hotel>> GetAllHotels()
     {
-        return await _hotelDAO.GetAllHotelsAsync();
+        var temp = await _hotelDAO.GetAllHotels();
+
+        Console.WriteLine(temp.FirstOrDefault().Rooms.FirstOrDefault());
+
+        return temp;
     }
 
     public async Task<Hotel> GetHotelById(int id)
     {
-        return await _hotelDAO.GetHotelByIdAsync(id);
+        return await _hotelDAO.GetHotelById(id);
     }
 
     public async Task<Hotel> CreateHotel(Hotel hotel)
     {
-        System.Console.WriteLine("____`````____");
-        return await _hotelDAO.AddHotelAsync(hotel);
+        return await _hotelDAO.CreateHotel(hotel);
     }
 
     public async Task UpdateHotel(Hotel hotel)
