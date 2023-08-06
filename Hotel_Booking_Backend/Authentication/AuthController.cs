@@ -15,6 +15,7 @@ namespace Hotel_Booking_Backend.Authentication;
 [ApiController]
 public class AuthController : ControllerBase
 {
+    // This APi is used to generate JWT Token for Alex
     private readonly IConfiguration _configuration;
     private readonly IAuthUserService _userService;
     public AuthController(IConfiguration configuration, IAuthUserService userService)
