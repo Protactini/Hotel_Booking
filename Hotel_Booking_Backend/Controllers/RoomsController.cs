@@ -7,7 +7,7 @@ using Hotel_Booking_Backend.Services;
 namespace Hotel_Booking_Backend.Controllers;
 
 [ApiController]
-[Route("hotels/{hotelId}/rooms")]
+[Route("api/[controller]/{hotelId}")]
 public class RoomsController : ControllerBase
 {
     private readonly IRoomService _roomService;

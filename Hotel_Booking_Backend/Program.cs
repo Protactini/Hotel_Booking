@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Hotel_Booking_Backend.Middleware;
+using Hotel_Booking_Backend.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,7 @@ builder.Services.AddScoped<IBookingDAO, BookingDAO>();
 builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IHotelService, HotelService>();
 builder.Services.AddScoped<IRoomService, RoomService>();
+builder.Services.AddSingleton<IAuthUserService, AuthUserService>();
 
 
 //Add Authentication to the ReatFul APi

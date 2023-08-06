@@ -10,13 +10,13 @@ public class JWTMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly IConfiguration _configuration;
-    private readonly IAuthUserService _userService;
+    private readonly IAuthUserService _authUserService;
 
-    public JWTMiddleware(RequestDelegate next, IConfiguration configuration, IAuthUserService userService)
+    public JWTMiddleware(RequestDelegate next, IConfiguration configuration, IAuthUserService authUserService)
     {
         _next = next;
         _configuration = configuration;
-        _userService = userService;
+        _authUserService = authUserService;
     }
 
     public async Task Invoke(HttpContext context)
@@ -49,7 +49,7 @@ public class JWTMiddleware
             var accountId = jwtToken.Claims.First(x => x.Type == "id").Value;
 
             // attach account to context on successful jwt validation
-            context.Items["User"] = _userService.GetUserDetails();
+            context.Items["User"] = _authUserService.GetUserDetails();
         }
         catch
         {

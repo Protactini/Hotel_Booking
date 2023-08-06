@@ -7,7 +7,7 @@ using Hotel_Booking_Backend.Services;
 namespace User_Booking_Backend.Controllers;
 
 [ApiController]
-[Route("users/{userId}/users")]
+[Route("api/[controller]")]
 public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
@@ -17,15 +17,15 @@ public class UsersController : ControllerBase
         _userService = userService;
     }
 
-    // GET: /users/{userId}/users
-    [HttpGet]
+    // GET: /users/{userId}
+    [HttpGet("{userId}")]
     public async Task<IEnumerable<User>> GetUserById(int userId)
     {
         return (IEnumerable<User>)await _userService.GetUserById(userId);
     }
 
 
-    // POST: /users/{userId}/users
+    // POST: /users
     [HttpPost]
     public async Task<ActionResult<User>> CreateUser([FromBody] User user)
     {
@@ -33,7 +33,7 @@ public class UsersController : ControllerBase
         return CreatedAtAction(nameof(CreateUser), new { userId = createdUser.Id}, createdUser);
     }
 
-    // PUT: /users/{userId}/users/{userId}
+    // PUT: /users/{userId}
     [HttpPut("{userId}")]
     public async Task<IActionResult> UpdateUser(int userId, [FromBody] User user)
     {
@@ -46,7 +46,7 @@ public class UsersController : ControllerBase
         return NoContent();
     }
 
-    // DELETE: /users/{userId}/users/{userId}
+    // DELETE: /users/{userId}
     [HttpDelete("{userId}")]
     public async Task<IActionResult> DeleteUser(int userId)
     {
