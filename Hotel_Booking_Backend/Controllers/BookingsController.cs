@@ -3,11 +3,14 @@ using Hotel_Booking_Backend.Models;
 using Hotel_Booking_Backend.DAO;
 using Hotel_Booking_Backend.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace Hotel_Booking_Backend.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
 public class BookingsController : ControllerBase
 {
     private readonly IBookingService _bookingService;
